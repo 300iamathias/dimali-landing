@@ -859,7 +859,7 @@ export default function Home() {
               © {new Date().getFullYear()} Di Mali — Manos Mágicas. Todos los derechos reservados.
             </p>
             <p className="text-white/30 font-sans text-xs">
-              Hecho con 🤍 en Ecuador
+              Hecho por{' '}<a href="https://jimbra.net" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-light transition-colors">Jimbra</a>{' '}Todo lo que necesitas
             </p>
           </div>
         </div>

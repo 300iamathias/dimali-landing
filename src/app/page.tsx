@@ -1844,40 +1844,46 @@ export default function Home() {
           </div>
 
           <div className="space-y-3">
-            {FAQ_DATA.map((faq, i) => (
-              <div
-                key={i}
-                className={`faq-item animate-on-scroll bg-white rounded-2xl overflow-hidden border border-gold/5 shadow-sm transition-shadow duration-300 ${
-                  openFaq === i ? 'shadow-md' : ''
-                }`}
-                style={{ transitionDelay: `${i * 50}ms` }}
-              >
-                <button
-                  className="w-full flex items-center justify-between p-5 sm:p-6 text-left"
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                >
-                  <span className="font-serif text-base sm:text-lg text-navy pr-4">
-                    {faq.q}
-                  </span>
-                  <span
-                    className={`faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-cream flex items-center justify-center text-navy font-bold transition-transform duration-300 ${
-                      openFaq === i ? 'rotate-45' : ''
-                    }`}
-                  >
-                    +
-                  </span>
-                </button>
+            {FAQ_DATA.map((faq, i) => {
+              const isOpen = openFaq === i;
+              return (
                 <div
-                  className={`faq-content ${openFaq === i ? 'open' : ''}`}
+                  key={i}
+                  className="faq-item bg-white rounded-2xl overflow-hidden border border-gold/5 shadow-sm transition-shadow duration-300 hover:shadow-md"
                 >
-                  <div className="px-5 sm:px-6 pb-5 sm:pb-6">
-                    <p className="text-sm sm:text-base text-muted-foreground font-sans leading-relaxed">
-                      {faq.a}
-                    </p>
+                  <button
+                    className="w-full flex items-center justify-between p-5 sm:p-6 text-left cursor-pointer"
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-serif text-base sm:text-lg text-navy pr-4">
+                      {faq.q}
+                    </span>
+                    <span
+                      className={`flex-shrink-0 w-8 h-8 rounded-full bg-cream flex items-center justify-center text-navy font-bold transition-transform duration-300 ${
+                        isOpen ? 'rotate-45' : ''
+                      }`}
+                    >
+                      +
+                    </span>
+                  </button>
+                  <div
+                    className="grid transition-[grid-template-rows] duration-300 ease-in-out"
+                    style={{
+                      gridTemplateRows: isOpen ? '1fr' : '0fr',
+                    }}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-5 sm:px-6 pb-5 sm:pb-6">
+                        <p className="text-sm sm:text-base text-muted-foreground font-sans leading-relaxed">
+                          {faq.a}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

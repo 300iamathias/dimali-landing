@@ -240,25 +240,6 @@
   animation: pulse-gold 2s ease-in-out infinite;
 }
 
-/* FAQ Accordion */
-.faq-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
-}
-
-.faq-content.open {
-  max-height: 500px;
-}
-
-.faq-icon {
-  transition: transform 0.3s ease;
-}
-
-.faq-item.open .faq-icon {
-  transform: rotate(45deg);
-}
-
 /* Gradient text */
 .text-gradient-gold {
   background: linear-gradient(135deg, #C9A96E, #D4BC8A, #C9A96E);
